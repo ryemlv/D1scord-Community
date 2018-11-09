@@ -2,10 +2,9 @@ package discord_board_4;
 
 import java.awt.Color;
 import java.awt.Cursor;
-
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -15,42 +14,42 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-
 public class Discord_LogIn extends JFrame {
 	private Image screenImage;
 	private Graphics screenGraphic;
-	
-	private JLabel menuBar = new JLabel(new ImageIcon(Main.class.getResource("../images/menuBar.png")));	
+
+	private JLabel menuBar = new JLabel(new ImageIcon(Main.class.getResource("../images/menuBar.png")));
 
 	private Image background = new ImageIcon(Main.class.getResource("../images/introbackground.jpg")).getImage();
 	private ImageIcon exitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/exitButtonEntered.png"));
 	private ImageIcon exitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/exitButtonBasic.png"));
 	private ImageIcon loginButtonImage = new ImageIcon(Main.class.getResource("../images/loginButton.png"));
 	private ImageIcon signupButtonImage = new ImageIcon(Main.class.getResource("../images/signupButton.png"));
-	
+
 	private JButton exitButton = new JButton(exitButtonBasicImage);
 	private JButton loginButton = new JButton(loginButtonImage);
 	private JButton signupButton = new JButton(signupButtonImage);
-	
+
+	private Image titleImage;
+	private Image selectedImage;
 	private int mouseX, mouseY;
+	private boolean isMainScreen = false;
 
-
-
-	
+    
 	public Discord_LogIn() {
-		
+
 		setUndecorated(true);
 		setTitle("Discord Board");
-		setSize(Main.SCREEN_WIDTH,Main.SCREEN_HEIGHT);
+		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setResizable(false);
-		setLocationRelativeTo(null); 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ã¢ ¸ğµÎ Á¾·á½Ã ÇÁ·Î±×·¥µµ °°ÀÌ Á¾·á 
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ì°½ ëª¨ë‘ ì¢…ë£Œì‹œ í”„ë¡œê·¸ë¨ë„ ê°™ì´ ì¢…ë£Œ
 		setVisible(true);
 		setBackground(new Color(0, 0, 0, 0));
 		setLayout(null);
-		
+
 		exitButton.setBounds(1240, 0, 40, 40);
-		exitButton.setBorderPainted(false); // ÀÌÁÙ ¾øÀ¸¸é ±âº» ÀÚ¹Ù JButton ¹Ú½º¿¡ ÀÌ¹ÌÁö µé¾î°¨
+		exitButton.setBorderPainted(false); // ì´ì¤„ ì—†ìœ¼ë©´ ê¸°ë³¸ ìë°” JButton ë°•ìŠ¤ì— ì´ë¯¸ì§€ ë“¤ì–´ê°
 		exitButton.setContentAreaFilled(false);
 		exitButton.setFocusPainted(false);
 		exitButton.addMouseListener(new MouseAdapter() {
@@ -59,21 +58,23 @@ public class Discord_LogIn extends JFrame {
 				exitButton.setIcon(exitButtonEnteredImage);
 				exitButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				exitButton.setIcon(exitButtonBasicImage);
 				exitButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				System.exit(0);
 			}
 		});
 
-		add(exitButton);		
-		
+		add(exitButton);
+
 		loginButton.setBounds(490, 110, 300, 100);
-		loginButton.setBorderPainted(false); // ÀÌÁÙ ¾øÀ¸¸é ±âº» ÀÚ¹Ù JButton ¹Ú½º¿¡ ÀÌ¹ÌÁö µé¾î°¨
+		loginButton.setBorderPainted(false); // ì´ì¤„ ì—†ìœ¼ë©´ ê¸°ë³¸ ìë°” JButton ë°•ìŠ¤ì— ì´ë¯¸ì§€ ë“¤ì–´ê°
 		loginButton.setContentAreaFilled(false);
 		loginButton.setFocusPainted(false);
 		loginButton.addMouseListener(new MouseAdapter() {
@@ -82,26 +83,26 @@ public class Discord_LogIn extends JFrame {
 				loginButton.setIcon(loginButtonImage);
 				loginButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				loginButton.setIcon(loginButtonImage);
 				loginButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
+
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// ·Î±×ÀÎ ÀÌº¥Æ® ÆË¾÷Ã¢ ¶ß°Ô ¹¹ 
-				loginButton.setVisible(false);
-				signupButton.setVisible(false);
-				background = new ImageIcon(Main.class.getResource("../images/mainBackground.png")).getImage();
+				// ë¡œê·¸ì¸ ì´ë²¤íŠ¸ íŒì—…ì°½ ëœ¨ê²Œ ë­
+				MainFrame_Second Login = new MainFrame_Second(); //ì—¬ê¸°ê°€ í”„ë ˆì„ ì „í™˜ ì—­í• 
+		        Login.setVisible(true);
 
 			}
 		});
 
-		add(loginButton);	
-		
+		add(loginButton);
 
 		signupButton.setBounds(480, 170, 300, 100);
-		signupButton.setBorderPainted(false); // ÀÌÁÙ ¾øÀ¸¸é ±âº» ÀÚ¹Ù JButton ¹Ú½º¿¡ ÀÌ¹ÌÁö µé¾î°¨
+		signupButton.setBorderPainted(false); // ì´ì¤„ ì—†ìœ¼ë©´ ê¸°ë³¸ ìë°” JButton ë°•ìŠ¤ì— ì´ë¯¸ì§€ ë“¤ì–´ê°
 		signupButton.setContentAreaFilled(false);
 		signupButton.setFocusPainted(false);
 		signupButton.addMouseListener(new MouseAdapter() {
@@ -110,34 +111,34 @@ public class Discord_LogIn extends JFrame {
 				signupButton.setIcon(signupButtonImage);
 				signupButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				signupButton.setIcon(signupButtonImage);
 				signupButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 			}
+
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// ·Î±×ÀÎ ÀÌº¥Æ® ÆË¾÷Ã¢ ¶ß°Ô ¹¹ 
-				loginButton.setVisible(false);
-				signupButton.setVisible(false);
-				background = new ImageIcon(Main.class.getResource("../images/mainBackground.png")).getImage();
+				// ë¡œê·¸ì¸ ì´ë²¤íŠ¸ íŒì—…ì°½ ëœ¨ê²Œ ë­  í•´ì•¼í•˜ëŠ”ë° ëª¨ë¥´ê² ìŒ.....
+
+
 
 			}
 		});
 
-		add(signupButton);	
-		
-		
+		add(signupButton);
+
 		menuBar.setBounds(0, 0, 1280, 30);
 		/*
-		 * ¾Æ·¡´Â ¸Ş´º¹Ù¸¦ ÀâÀ¸¸é ¿òÁ÷ÀÌ°Ô ÇÒ¼öÀÖµå·Ï Ã³¸®
+		 * ì•„ë˜ëŠ” ë©”ë‰´ë°”ë¥¼ ì¡ìœ¼ë©´ ì›€ì§ì´ê²Œ í• ìˆ˜ìˆë“œë¡ ì²˜ë¦¬
 		 */
 		menuBar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				mouseX = e.getX();
 				mouseY = e.getY();
-				
+
 			}
 		});
 		menuBar.addMouseMotionListener(new MouseMotionAdapter() {
@@ -145,27 +146,31 @@ public class Discord_LogIn extends JFrame {
 			public void mouseDragged(MouseEvent e) {
 				int x = e.getXOnScreen();
 				int y = e.getYOnScreen();
-				setLocation(x - mouseX, y -mouseY);
+				setLocation(x - mouseX, y - mouseY);
 			}
 		});
-		
+
 		add(menuBar);
-		
 
 	}
-	
-	
+
 	public void paint(Graphics g) {
 		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		screenGraphic = screenImage.getGraphics();
 		screenDraw(screenGraphic);
-		g.drawImage(screenImage,0,0,null);
-		
+		g.drawImage(screenImage, 0, 0, null);
+
 	}
+
 	public void screenDraw(Graphics g) {
-	 g.drawImage(background, 0, 0, null);
-	 paintComponents(g);
-	 this.repaint();
+		g.drawImage(background, 0, 0, null);
+		if(isMainScreen)
+		{
+			g.drawImage(selectedImage, 340, 100, null);
+			g.drawImage(titleImage, 340, 70, null);
+		}
+		paintComponents(g);
+		this.repaint();
 	}
 
 }

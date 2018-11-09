@@ -2,12 +2,12 @@ package discord_board_4;
 
 
 public class Main {
-	public static final int SCREEN_WIDTH = 1280; //³ĞÀÌ FIANL Àº º¯ÇÏÁö ¾Ê´Â º¯¼ö
-	public static final int SCREEN_HEIGHT = 720; //³ôÀÌ 
+	public static final int SCREEN_WIDTH = 1280; //ë„“ì´ FIANL ì€ ë³€í•˜ì§€ ì•ŠëŠ” ë³€ìˆ˜
+	public static final int SCREEN_HEIGHT = 720; //ë†’ì´ 
 	
 	public static void main(String[] args) {
 		DBConnection connection = new DBConnection();
-		System.out.println("°ü¸®ÀÚ ¿©ºÎ : " + connection.isAdmin("admin", "admin"));
+		System.out.println("ê´€ë¦¬ì ì—¬ë¶€: " + connection.isAdmin("admin", "admin"));
 		new Discord_LogIn();
 	}
 

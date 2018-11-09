@@ -2,8 +2,8 @@ package discord_board_3;
 
 
 public class Main {
-	public static final int SCREEN_WIDTH = 1280; //³ÐÀÌ FIANL Àº º¯ÇÏÁö ¾Ê´Â º¯¼ö
-	public static final int SCREEN_HEIGHT = 720; //³ôÀÌ 
+	public static final int SCREEN_WIDTH = 1280; //ï¿½ï¿½ï¿½ï¿½ FIANL ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½
+	public static final int SCREEN_HEIGHT = 720; //ï¿½ï¿½ï¿½ï¿½ 
 	
 	public static void main(String[] args) {
 		
@@ -13,3 +13,4 @@ public class Main {
 	
 
 }
+//
